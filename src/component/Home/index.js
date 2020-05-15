@@ -1,14 +1,17 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { setImageSource, setHaveImage, setViewId } from '../../actions';
+import { setImageSource, setHaveImage, setViewId, removeAPIError } from '../../actions';
 import Editing from '../Editing';
 import ImageGallery from '../ImageGallery';
 import Wave from '../Wave';
 import Icon from '../../icons';
 import './home.css'
+import { useModal } from '../../customHooks';
 
 function Home({ setHaveImage, haveImage, viewId, setImageSource, setViewId }) {
     const inputRef = useRef()
+    const {ModalProvider, showModal} = useModal()
+
     const fileUploadHandler = (e) => {
         e.preventDefault()
         const reader = new FileReader();
@@ -20,7 +23,7 @@ function Home({ setHaveImage, haveImage, viewId, setImageSource, setViewId }) {
                 const height = this.height
                 const width = this.width
                 if (width !== 1024 && height !== 1024) {
-                    alert("Please upload pic of 1024x1024")
+                showModal(<p>Please upload image of size 1024x1024px, provided image is of {width}x{height}</p>)
                     return
                 }
                 setImageSource(reader.result)
@@ -33,6 +36,7 @@ function Home({ setHaveImage, haveImage, viewId, setImageSource, setViewId }) {
     if (haveImage) return <Editing />
     return (
         <div className="component-container">
+            <ModalProvider/>
             <Wave/>
             <div className="home-wrapper">
                 <div className="home-section-1">

@@ -14,7 +14,7 @@ export const imageUploader = ({image, description}) =>
         .then(r => r.json())
         .then(response => {
             if(response.success) resolve(response.data.id)
-            else  reject(false)
+            else  reject(response.data.error)
         })
-        .catch(_ => reject(false))
+        .catch(reject)
     })

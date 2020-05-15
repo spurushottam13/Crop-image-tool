@@ -1,4 +1,6 @@
 import useImageCropper from './useImageCropper'
+import useModal from './useModal'
 export  {
-    useImageCropper
+    useImageCropper,
+    useModal
 }

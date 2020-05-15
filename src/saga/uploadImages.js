@@ -7,9 +7,14 @@ function* uploadImages({ payload }) {
         const promise = imageUploader({ image })
         promiseStack.push(promise)
     });
-    const data = yield Promise.all(promiseStack)
-    yield put({ type: 'SET_IS_LOADING', payload: false })
-    yield put({ type: 'SET_VIEW_ID', payload: data.join("-") })
+    try{
+        const data = yield Promise.all(promiseStack)
+        yield put({ type: 'SET_IS_LOADING', payload: false })
+        yield put({ type: 'SET_VIEW_ID', payload: data.join("-") })
+    }catch(err){
+        console.error(err)
+        yield put({type: 'API_ERROR', payload: err})
+    }
 }
 
 export default uploadImages

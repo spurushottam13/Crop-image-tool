@@ -15,6 +15,8 @@ const mainReducer = (state, action) => {
             return {...state, ...{isLoading: payload}}
         case 'SET_VIEW_ID': 
             return {...state, ...{viewId: payload}}
+        case 'API_ERROR': 
+            return {...state, ...{apiError: payload}}
         default:
             return state
     }

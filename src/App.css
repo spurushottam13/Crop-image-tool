@@ -69,3 +69,15 @@ body {
 .f0-8{
   font-size: 0.8rem;
 }
+
+@media only screen and (max-width: 600px){
+  .component-container{
+    padding: 1rem;
+  }
+  .capsule{
+    display: none;
+  }
+  .n-text{
+    display: none;
+  }
+}

@@ -5,3 +5,4 @@ export const setActiveCropCanvasIndex = (payload) => ({type: 'SET_ACTIVE_CROP_CA
 export const setIsLoading = (payload) => ({type: 'SET_IS_LOADING', payload})
 export const uploadImages = (payload) => ({type:'UPLOAD_IMAGES', payload})
 export const setViewId = (payload) => ({type: 'SET_VIEW_ID', payload})
+export const removeAPIError = (payload) => ({type: 'API_ERROR', payload})

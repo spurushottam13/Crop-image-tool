@@ -1,19 +1,28 @@
 import React, { useEffect, useState, useRef } from 'react'
 import CropCanvas from '../CropCanvas'
 import { connect } from 'react-redux'
-import { useImageCropper } from '../../customHooks'
-import { setActiveCropCanvasIndex, uploadImages } from '../../actions'
+import { useImageCropper, useModal } from '../../customHooks'
+import { setActiveCropCanvasIndex, uploadImages, removeAPIError } from '../../actions'
 import './editing.css'
 
-function Editing({imgSource, allCropCanvas, isLoading, uploadImages, setActiveCropCanvasIndex}){
+function Editing({imgSource, allCropCanvas, isLoading,apiError, removeAPIError, uploadImages, setActiveCropCanvasIndex}){
     const [key, setKey] = useState(0)
     const originalCanvas = useRef()
     const isCanvasCropped = useRef([false, false, false, false])
+
+    const {ModalProvider, showModal} = useModal()
     const { setCanvas } = useImageCropper(originalCanvas)
 
     useEffect(()=>{
         originalCanvas.current.style.backgroundImage = `url(${imgSource})`
     })
+
+    useEffect(() => {
+        if(apiError){
+            showModal(<p>API Error:{apiError} <br/><br/>See console.log for more info</p>)
+            removeAPIError(false)
+        }
+    }, [apiError])
 
     const handleCropCanvasClick = (index) => {
         setKey(index + 1)
@@ -30,15 +39,17 @@ function Editing({imgSource, allCropCanvas, isLoading, uploadImages, setActiveCr
     }
     const handleUploadClick = () => {
         if(isCanvasCropped.current.filter(i => i).length !== 4 ) {
-            alert("Please select all region ")
+            showModal(<p>Please selecct all image size to crop, by clicking on Image size button.</p>)
             return
         }
         const allImages = []
-        allCropCanvas.forEach(i => allImages.push(i.current.toDataURL().split(",")[1]))
+        // allCropCanvas.forEach(i => allImages.push(i.current.toDataURL().split(",")[1]))
+        allCropCanvas.forEach(i => allImages.push(i.current.toDataURL()))
         uploadImages(allImages)
     }
     return(
         <div className="component-container">
+            <ModalProvider/>
             <div className="edit-tools-wrapper">
                 <div className="content-wrapper">
                     Click on the Image size button and select the crop area for each <br/>
@@ -100,13 +111,15 @@ function mapStateToProp(state){
     return{
         imgSource: state.imgSource,
         allCropCanvas: state.allCropCanvas,
-        isLoading: state.isLoading
+        isLoading: state.isLoading,
+        apiError: state.apiError
     }
 }
 
 const mapDispatchToProp = {
     setActiveCropCanvasIndex: setActiveCropCanvasIndex,
-    uploadImages: uploadImages
+    uploadImages: uploadImages,
+    removeAPIError: removeAPIError
 }
 
 export default connect(mapStateToProp, mapDispatchToProp)(Editing)
