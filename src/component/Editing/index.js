@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { useImageCropper } from '../../customHooks'
 import { setActiveCropCanvasIndex, setIsLoading, uploadImages } from '../../actions'
 import ImageGallery from '../ImageGallery'
+import './editing.css'
 
 function Editing({imgSource, allCropCanvas, isLoading, uploadImages, setActiveCropCanvasIndex}){
     const [key, setKey] = useState(0)
@@ -39,30 +40,60 @@ function Editing({imgSource, allCropCanvas, isLoading, uploadImages, setActiveCr
         uploadImages(allImages)
     }
     return(
-        <div className="component-wrapper">
-            <p>This is Canvas</p>
-            <div>
+        <div className="component-container">
+            <div className="edit-tools-wrapper">
+                <div className="content-wrapper">
+                    Click on the Image size button and select the crop area for each <br/>
+                </div>
+               <div className="inline-wrapper">
+                <div className="inline-wrapper">
+                        <div 
+                            className={isCanvasCropped.current[2] ? "bg-soft btn" : "btn"} 
+                            onClick={_ => handleCropCanvasClick(2)}
+                        >
+                            365x212
+                        </div>
+                        <div 
+                            className={isCanvasCropped.current[3] ? "bg-soft btn" : "btn"} 
+                            onClick={_ => handleCropCanvasClick(3)}
+                        >
+                            380x380    
+                        </div>
+                        <div 
+                            className={isCanvasCropped.current[1] ? "bg-soft btn" : "btn"}
+                            onClick={_ => handleCropCanvasClick(1)}
+                        >
+                            365x450
+                        </div>
+                        <div 
+                            className={isCanvasCropped.current[0] ? "bg-soft btn" : "btn"} 
+                            onClick={_ => handleCropCanvasClick(0)}
+                        >
+                            755x450
+                        </div>
+                    </div>
+                    <div className="inline-wrapper">
+                        <div className="btn bg-blue" onClick={_ => handleUploadClick()} disabled={isLoading}>
+                        {
+                            isLoading ? 'Uploading...' : "Upload Images"
+                        }
+                        </div>
+                    </div>
+               </div>
+            </div>
+            <div className="canvas-wrapper">
                 <canvas 
+                    className="canvas-style"
                     id="original-canvas" 
                     key={key} 
                     ref={originalCanvas} 
                     width={1024} height={1024}
                 ></canvas>
+                <div>
+                    Preview of the croped image. (If not visible Please click image size button)
+                </div>
+                <CropCanvas/>
             </div>
-            <div>
-                <button onClick={_ => handleCropCanvasClick(0)}>755x450</button>
-                <button onClick={_ => handleCropCanvasClick(1)}>365x450</button>
-                <button onClick={_ => handleCropCanvasClick(2)}>365x212</button>
-                <button onClick={_ => handleCropCanvasClick(3)}>380x380</button>
-            </div>
-            <div>
-                <button onClick={_ => handleUploadClick()} disabled={isLoading}>
-                    {
-                        isLoading ? 'Doing...' : "Upload Images"
-                    }
-                </button>
-            </div>
-            <CropCanvas/>
         </div>
     )
 }

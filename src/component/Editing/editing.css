@@ -1,0 +1,50 @@
+.edit-tools-wrapper{
+    background: var(--background-color);
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.edit-tools-wrapper .content-wrapper{
+    text-align: justify;
+    margin-bottom: 15px;
+}
+
+.inline-wrapper{
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.canvas-wrapper{
+    background: var(--background-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn{
+    background: white;
+    padding: 8px 16px;
+    margin: 4px 6px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+}
+.bg-blue{
+    background: var(--primary-color);
+    color: white
+}
+
+.bg-soft{
+    background: var(--soft);
+}
+
+.canvas-style{
+    border: 10px solid white;
+    border-radius: 8px;
+    margin: 10px;
+    box-shadow: 0 2px 20px 7px rgba(0,0,0,.05);
+}

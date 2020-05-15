@@ -1,0 +1,80 @@
+.home-wrapper{
+    display: flex;
+    height: inherit;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.upload-area{
+    background: #5253ef;
+    color: white;
+    width: 300px;
+    height: 200px;
+    padding: 1rem;
+    border-radius: 6px;
+    box-shadow: 0 2px 20px 7px rgba(0,0,0,.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    margin: 1rem;
+}
+
+.search-viewid{
+    margin: 1rem;
+    padding: 1rem;
+    box-sizing: border-box;
+    background: white;
+    border-radius: 6px;
+}
+
+.search-viewid  input {
+    border: none;
+    background: var(--background-color);
+    padding: 0.5rem 1rem;
+    width: -webkit-fill-available;
+    border-radius: 4px;
+}
+
+.search-icon{
+    width: inherit;
+    height: inherit;
+    background: var(--primary-color);
+    fill: white;
+    padding: 5px;
+    margin-left: -2px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    cursor: pointer;
+}
+
+.myfileupload-buttonbar input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    border: solid transparent;
+    border-width: 0 0 100px 200px;
+    opacity: 0.0;
+    filter: alpha(opacity=0);
+    -o-transform: translate(250px, -50px) scale(1);
+    -moz-transform: translate(-300px, 0) scale(4);
+    direction: ltr;
+    cursor: pointer;
+}
+.myui-button
+{
+    position: relative;
+    cursor: pointer;
+    text-align: center;
+    overflow: visible;
+    background: white;
+    color: var(--primary-color);
+    padding: 8px 16px;
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

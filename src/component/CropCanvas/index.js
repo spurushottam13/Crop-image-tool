@@ -12,25 +12,25 @@ function CropCanvas({ activeCropCanvas, activeCropCanvasIndex, addAllCropCanvas 
     return (
         <React.Fragment>
             <canvas
-                className="crop-canvas"
+                className="crop canvas-style"
                 style={activeCropCanvasIndex  === 0 ? {display: 'block'} : {}}
                 ref={cropCanvas1}
                 width={755} height={450}
             ></canvas>
             <canvas
-                className="crop-canvas"
+                className="crop canvas-style"
                 style={activeCropCanvasIndex  === 1 ? {display: 'block'} : {}}
                 ref={cropCanvas2}
                 width={365} height={450}
             ></canvas>
             <canvas
-                className="crop-canvas"
+                className="crop canvas-style"
                 style={activeCropCanvasIndex  === 2 ? {display: 'block'} : {}}
                 ref={cropCanvas3}
                 width={365} height={212}
             ></canvas>
             <canvas
-                className="crop-canvas"
+                className="crop canvas-style"
                 style={activeCropCanvasIndex  === 3 ? {display: 'block'} : {}}
                 ref={cropCanvas4}
                 width={380} height={380}

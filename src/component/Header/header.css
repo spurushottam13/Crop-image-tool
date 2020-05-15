@@ -1,0 +1,9 @@
+.header{
+    background: white;
+    height: 8vh;
+    color: var(--primary-color);
+    box-shadow: 0 2px 20px 7px rgba(0,0,0,.05);
+    line-height: 8vh;
+    padding-left: 1rem;
+    font-weight: 700;
+}

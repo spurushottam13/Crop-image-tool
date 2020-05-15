@@ -10,6 +10,7 @@ import  createSagaMiddleware  from 'redux-saga'
 import rootSaga from './saga';
 import Editing from './component/Editing';
 import Home from './component/Home';
+import Header from './component/Header';
 
 const logger = createLogger({ collapsed: true })
 const sagaMiddleware = createSagaMiddleware()
@@ -20,6 +21,7 @@ function App() {
   return (
     <Provider store={store}>
       <div className="App">
+        <Header/>
         {/* <Canvas /> */}
         <Home/>
       </div>

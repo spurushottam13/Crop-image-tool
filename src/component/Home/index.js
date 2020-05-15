@@ -3,8 +3,11 @@ import { connect } from 'react-redux';
 import { setImageSource, setHaveImage } from '../../actions';
 import Editing from '../Editing';
 import ImageGallery from '../ImageGallery';
+import Wave from '../Wave';
+import Icon from '../../icons';
+import './home.css'
 
-function Home({setHaveImage, haveImage, viewId, setImageSource}) {
+function Home({ setHaveImage, haveImage, viewId, setImageSource }) {
     const fileUploadHandler = (e) => {
         e.preventDefault()
         const reader = new FileReader();
@@ -12,10 +15,10 @@ function Home({setHaveImage, haveImage, viewId, setImageSource}) {
         reader.onload = function (event) {
             const img = new Image()
             img.src = reader.result
-            img.onload = function(){
+            img.onload = function () {
                 const height = this.height
                 const width = this.width
-                if(width !== 1024 && height !== 1024) {
+                if (width !== 1024 && height !== 1024) {
                     alert("Please upload pic of 1024x1024")
                     return
                 }
@@ -27,20 +30,44 @@ function Home({setHaveImage, haveImage, viewId, setImageSource}) {
         }
         reader.readAsDataURL(file)
     }
-    if(viewId) return (<ImageGallery/>)
-    if(haveImage) return (<Editing/>)
+    if (viewId) return <ImageGallery/>
+    if (haveImage) return <Editing />
     return (
-        <div className="component-wrapper">
-            <p>This is Main Page</p>
-            <input className="fileInput"
-                type="file"
-                onChange={fileUploadHandler} />
+        <div className="component-container">
+            <Wave/>
+            <div className="home-wrapper">
+                <div className="home-section-1">
+                    <span className="bold800 f2">Crop 1024x1024 <br/> image into diffent size </span><br />
+                    <span className="bold800 f3">755x450 </span><br />
+                    <span className="bold800 f2-4">365x450 </span><br />
+                    <span className="bold800 f1-8">365x212 </span><br />
+                    <span className="bold800 f1-2">380x380 </span><br />
+                    <span className="bold800 f0-8"> and store on imgur cloud hosting and access through view-id <span className="badge">anytime.</span></span>
+                </div>
+                <div className="home-section-2">
+                    <div className="upload-area">
+                        <div className="myfileupload-buttonbar">
+                            <label class="myui-button">
+                                <Icon.upload /><span >  Add Files</span>
+                                <input id="file" type="file" name="files[]" onChange={fileUploadHandler} />
+                            </label>
+                        </div>
+                    </div>
+                    <div className="search-viewid">
+                        <p>Have a view-id ? </p>
+                        <div className="inline">
+                            <input type="text" />
+                            <Icon.search />
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div >
     )
 }
 
-function mapStateToProp(state){
-    return{
+function mapStateToProp(state) {
+    return {
         haveImage: state.haveImage,
         viewId: state.viewId
     }
