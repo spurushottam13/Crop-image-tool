@@ -6,17 +6,23 @@ import { setActiveCropCanvasIndex, uploadImages, removeAPIError } from '../../ac
 import './editing.css'
 
 function Editing({imgSource, allCropCanvas, isLoading,apiError, removeAPIError, uploadImages, setActiveCropCanvasIndex}){
+    // Internal State of component apart from central store
     const [key, setKey] = useState(0)
     const originalCanvas = useRef()
+
+    // Using Ref for mutable varibale
     const isCanvasCropped = useRef([false, false, false, false])
 
+    // Using customHooks
     const {ModalProvider, showModal} = useModal()
     const { setCanvas } = useImageCropper(originalCanvas)
 
+    // Sets the img in original canvas
     useEffect(()=>{
         originalCanvas.current.style.backgroundImage = `url(${imgSource})`
     })
 
+    // Fires modal if api (imgur) giving error response, also log in console
     useEffect(() => {
         if(apiError){
             showModal(<p>API Error:{apiError} <br/><br/>See console.log for more info</p>)
@@ -24,11 +30,14 @@ function Editing({imgSource, allCropCanvas, isLoading,apiError, removeAPIError, 
         }
     }, [apiError])
 
+    // Select the size for cropping
     const handleCropCanvasClick = (index) => {
+        // Unmount and mount the original canvas by changing the key, for fresh refernce for cropping.
         setKey(index + 1)
         isCanvasCropped.current[index] = true
         setActiveCropCanvasIndex(index)
         const canvas = allCropCanvas[index]
+        // Use hooks to render crop image in result canvas from the original canvas
         setCanvas({
             originalCanvas: originalCanvas,
             resultCanvas: canvas,
@@ -37,7 +46,9 @@ function Editing({imgSource, allCropCanvas, isLoading,apiError, removeAPIError, 
             cropWidth: canvas.current.width
         })
     }
+    // Upload the image to igmur image cloud hosting service, using saga side-effect.
     const handleUploadClick = () => {
+        // Enforce user to select crop area for every size.
         if(isCanvasCropped.current.filter(i => i).length !== 4 ) {
             showModal(<p>Please selecct all image size to crop, by clicking on Image size button.</p>)
             return

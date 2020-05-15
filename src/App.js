@@ -14,6 +14,7 @@ const sagaMiddleware = createSagaMiddleware()
 export const store = createStore(mainReducer, {}, applyMiddleware(logger, sagaMiddleware))
 sagaMiddleware.run(rootSaga)
 store.dispatch({type: 'TEST'})
+
 function App() {
   return (
     <Provider store={store}>

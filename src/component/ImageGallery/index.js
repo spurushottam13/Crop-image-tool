@@ -3,9 +3,12 @@ import { connect } from 'react-redux';
 import ImageContainer from '../ImageContainer';
 
 function ImageGallery({viewId}){
+    
     useEffect(() => {
+        // Set the view-id in localStorage, so user revisitng can see view-id on header.
         window.localStorage.setItem('viewId', viewId)
     }, [viewId])
+
     return(
         <React.Fragment>
             <div className="message">

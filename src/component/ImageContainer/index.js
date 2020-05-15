@@ -3,9 +3,11 @@ import './imageContainer.css'
 
 function ImageContainer({src}){
     const [size, setSize] = useState(null)
+    // Ref for the img element
     const imgRef= useRef()
     useEffect(() => {
         if(imgRef.current){
+            // Detects the height n width of image load, and render as the title of img
             imgRef.current.onload = () => {
                 setSize({
                     width: imgRef.current.offsetWidth,

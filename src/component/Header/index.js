@@ -2,6 +2,7 @@ import React from 'react'
 import './header.css'
 
 function Header(){
+    // If previously used viewId store in localStorage
     const viewId = window.localStorage.getItem('viewId')
     return(
         <div className="header">
