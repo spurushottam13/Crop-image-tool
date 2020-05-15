@@ -112,6 +112,7 @@ export default function useImageCropper() {
         setOriginalCanvas(originalCanvas)
         setResultCanvas(resultCanvas)
         setImgUrl(img)
+        //mousePos.current = getMousePosition()
         cropConfig.current = {
             color: "white",
             x: originalCanvas.current.width / 2 - cropWidth/2 ,

@@ -291,3 +291,10 @@ function oMousePos(canvas, evt) {
     y: Math.round(evt.clientY - rect.top)
   }
 }
+
+
+
+///
+
+71532f80064a1b7
+52550130c341a30aa24aee6b205170fec00ebdfb

@@ -1,0 +1,8 @@
+.crop-canvas{
+    border: 1px solid;
+    display: none;
+}
+
+.crop-canvas-wrapper{
+    display: inline;
+}
