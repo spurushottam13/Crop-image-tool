@@ -43,8 +43,7 @@ function Editing({imgSource, allCropCanvas, isLoading,apiError, removeAPIError, 
             return
         }
         const allImages = []
-        // allCropCanvas.forEach(i => allImages.push(i.current.toDataURL().split(",")[1]))
-        allCropCanvas.forEach(i => allImages.push(i.current.toDataURL()))
+        allCropCanvas.forEach(i => allImages.push(i.current.toDataURL().split(",")[1]))
         uploadImages(allImages)
     }
     return(
@@ -52,7 +51,7 @@ function Editing({imgSource, allCropCanvas, isLoading,apiError, removeAPIError, 
             <ModalProvider/>
             <div className="edit-tools-wrapper">
                 <div className="content-wrapper">
-                    Click on the Image size button and select the crop area for each <br/>
+                    Click on the Image size button and drang n select the crop area for each <br/>
                 </div>
                <div className="inline-wrapper">
                 <div className="inline-wrapper">
