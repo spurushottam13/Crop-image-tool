@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { connect } from 'react-redux';
-import { setImageSource, setHaveImage } from '../../actions';
+import { setImageSource, setHaveImage, setViewId } from '../../actions';
 import Editing from '../Editing';
 import ImageGallery from '../ImageGallery';
 import Wave from '../Wave';
 import Icon from '../../icons';
 import './home.css'
 
-function Home({ setHaveImage, haveImage, viewId, setImageSource }) {
+function Home({ setHaveImage, haveImage, viewId, setImageSource, setViewId }) {
+    const inputRef = useRef()
     const fileUploadHandler = (e) => {
         e.preventDefault()
         const reader = new FileReader();
@@ -37,6 +38,7 @@ function Home({ setHaveImage, haveImage, viewId, setImageSource }) {
             <Wave/>
             <div className="home-wrapper">
                 <div className="home-section-1">
+                    <span className="bold800 f3 pcolor"> Hey!!</span> <br/>
                     <span className="bold800 f2">Crop 1024x1024 <br/> image into diffent size </span><br />
                     <span className="bold800 f3">755x450 </span><br />
                     <span className="bold800 f2-4">365x450 </span><br />
@@ -56,8 +58,8 @@ function Home({ setHaveImage, haveImage, viewId, setImageSource }) {
                     <div className="search-viewid">
                         <p>Have a view-id ? </p>
                         <div className="inline">
-                            <input type="text" />
-                            <Icon.search />
+                            <input type="text" ref={inputRef}/>
+                            <Icon.search onClick={_ => setViewId(inputRef.current.value)} />
                         </div>
                     </div>
                 </div>
@@ -75,7 +77,8 @@ function mapStateToProp(state) {
 
 const mapDispacthToProp = {
     setImageSource: setImageSource,
-    setHaveImage: setHaveImage
+    setHaveImage: setHaveImage,
+    setViewId: setViewId
 }
 
 export default connect(mapStateToProp, mapDispacthToProp)(Home)

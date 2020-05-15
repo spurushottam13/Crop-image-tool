@@ -14,9 +14,10 @@ const upload = _ =>(
     </svg>
 )
 
-const search = _ => (
+const search = ({onClick}) => (
     <svg version="1.1" 
         id="Capa_1" 
+        onClick={onClick}
         xmlns="http://www.w3.org/2000/svg"
         className="search-icon"
         x="0px" y="0px"width="25px" height="25px" 

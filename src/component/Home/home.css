@@ -28,6 +28,10 @@
     background: white;
     border-radius: 6px;
 }
+.search-viewid p {
+    margin: 0;
+    margin-bottom: 1rem;
+}
 
 .search-viewid  input {
     border: none;

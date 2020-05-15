@@ -15,7 +15,6 @@ body {
 .App{
   background: var(--background-color);
   height: 100vh;
-  margin-top: -1rem;
 }
 
 .component-container{
@@ -35,6 +34,21 @@ body {
 
 .bold800{
   font-weight: 800;
+}
+
+.message{
+  margin: 1rem;
+  padding: 1rem;
+  box-sizing: border-box;
+  background: white;
+  border-radius: 4px;
+  width: fit-content;
+  left: 50%;
+  position: relative;
+  transform: translateX(-50%);
+}
+.pcolor{
+  color: var(--primary-color);
 }
 
 .f3{

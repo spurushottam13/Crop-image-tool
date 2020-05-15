@@ -1,0 +1,14 @@
+.image-container{
+    border: 10px solid white;
+    border-radius: 8px;
+    margin: 10px;
+    box-shadow: 0 2px 20px 7px rgba(0,0,0,.05);
+}
+
+.image-container .header{
+    background: var(--soft);
+}
+
+.image-container .img{
+    color: black
+}

@@ -4,6 +4,38 @@
     color: var(--primary-color);
     box-shadow: 0 2px 20px 7px rgba(0,0,0,.05);
     line-height: 8vh;
-    padding-left: 1rem;
+    padding: 0rem 1rem;
     font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.n-text{
+    font-weight: normal;
+    color: var(--text-color);
+}
+
+.capsule{
+    font-weight: normal;
+    color: var(--text-color);
+    padding: 3px 8px;
+}
+
+.capsule.left{
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    background: var(--soft);
+}
+
+.capsule.right{
+    background: var(--background-color);
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.clean-aTag{
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
 }
