@@ -53,11 +53,12 @@ export default function useImageCropper() {
     useEffect(() => {
         // Return if all config are store in state
         if (!originalCanvas || !resultCanvas || !cropConfig) return
-        
+
         //Execute only when state is ready.
         const img = new Image()
         img.src = imgUrl
         img.onload = function () {
+            if(!originalCanvas.current) return
             originalCanvas.current.style.backgroundImage = `url(${imgUrl})`
             const originalContext = originalCanvas.current.getContext("2d")
             const resultContext = resultCanvas.current.getContext("2d")

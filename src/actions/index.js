@@ -1,0 +1,6 @@
+export const addAllCropCanvas = (payload) => ({type: 'ADD_ALL_CROP_CANVAS', payload})
+export const setImageSource = (payload) => ({type: 'SET_IMAGE_SOURCE',payload })
+export const setHaveImage = (payload) => ({type: 'SET_HAVE_IMAGE', payload})
+export const setActiveCropCanvasIndex = (payload) => ({type: 'SET_ACTIVE_CROP_CANVAS_INDEX', payload})
+export const setIsLoading = (payload) => ({type: 'SET_IS_LOADING', payload})
+export const uploadImages = (payload) => ({type:'UPLOAD_IMAGES', payload})

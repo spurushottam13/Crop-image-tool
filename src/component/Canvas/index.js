@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useImageCropper } from '../../customHooks';
 import './canvas.css'
 import { imageUploader } from '../../utils/imageUploader';
@@ -11,13 +11,12 @@ function Canvas() {
     const cropCanvas3 = useRef()
     const cropCanvas4 = useRef()
     const allCropCanvas = [cropCanvas1, cropCanvas2, cropCanvas3, cropCanvas4]
-    const { setCanvas, addCanavs } = useImageCropper(originalCanvas)
+    const { setCanvas } = useImageCropper(originalCanvas)
 
     const uploadHandler = (e) => {
         e.preventDefault()
         const reader = new FileReader();
         let file = e.target.files[0];
-        console.log(file)
         reader.onload = function (event) {
             const img = new Image()
             img.src = reader.result
@@ -103,6 +102,7 @@ function Canvas() {
                 ></canvas>
                 <canvas 
                     className="crop-canvas"
+
                     ref={cropCanvas3} 
                     width={365} height={212}
                 ></canvas>
