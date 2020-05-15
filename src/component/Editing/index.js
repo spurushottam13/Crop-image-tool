@@ -2,16 +2,14 @@ import React, { useEffect, useState, useRef } from 'react'
 import CropCanvas from '../CropCanvas'
 import { connect } from 'react-redux'
 import { useImageCropper } from '../../customHooks'
-import { setActiveCropCanvasIndex, setIsLoading, uploadImages } from '../../actions'
-import ImageGallery from '../ImageGallery'
+import { setActiveCropCanvasIndex, uploadImages } from '../../actions'
 import './editing.css'
 
 function Editing({imgSource, allCropCanvas, isLoading, uploadImages, setActiveCropCanvasIndex}){
     const [key, setKey] = useState(0)
-    const [defaultCropped, setDefaultCropped] = useState(false)
     const originalCanvas = useRef()
     const isCanvasCropped = useRef([false, false, false, false])
-    const { setCanvas, addCanavs } = useImageCropper(originalCanvas)
+    const { setCanvas } = useImageCropper(originalCanvas)
 
     useEffect(()=>{
         originalCanvas.current.style.backgroundImage = `url(${imgSource})`

@@ -25,8 +25,6 @@ function Home({ setHaveImage, haveImage, viewId, setImageSource, setViewId }) {
                 }
                 setImageSource(reader.result)
                 setHaveImage(true)
-                // originalCanvas.current.style.backgroundImage = `url(${reader.result})`
-                // defaultCrop(reader.result)
             }
         }
         reader.readAsDataURL(file)
@@ -48,8 +46,8 @@ function Home({ setHaveImage, haveImage, viewId, setImageSource, setViewId }) {
                 </div>
                 <div className="home-section-2">
                     <div className="upload-area">
-                        <div className="myfileupload-buttonbar">
-                            <label class="myui-button">
+                        <div className="fileupload-buttonbar">
+                            <label className="file-button">
                                 <Icon.upload /><span >  Add Files</span>
                                 <input id="file" type="file" name="files[]" onChange={fileUploadHandler} />
                             </label>

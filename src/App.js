@@ -1,14 +1,11 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Canvas from './component/Canvas';
 import { createStore, applyMiddleware } from 'redux';
 import mainReducer from './reducer';
 import { Provider } from 'react-redux'
 import { createLogger } from 'redux-logger';
 import  createSagaMiddleware  from 'redux-saga'
 import rootSaga from './saga';
-import Editing from './component/Editing';
 import Home from './component/Home';
 import Header from './component/Header';
 
@@ -22,7 +19,6 @@ function App() {
     <Provider store={store}>
       <div className="App">
         <Header/>
-        {/* <Canvas /> */}
         <Home/>
       </div>
     </Provider>

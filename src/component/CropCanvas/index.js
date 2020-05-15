@@ -1,4 +1,4 @@
-import React, {useRef, useEffect} from 'react'
+import React, {useRef} from 'react'
 import { connect } from 'react-redux'
 import './cropCanvas.css'
 import { addAllCropCanvas } from '../../actions'

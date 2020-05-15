@@ -5,7 +5,7 @@ function Header(){
     const viewId = window.localStorage.getItem('viewId')
     return(
         <div className="header">
-            <p>Image Cropping Tool</p>
+            <p> <span role="img" aria-labelledby="power">⚡</span> &nbsp;Image Cropping Tool</p>
             {
                 viewId ? (
                     <div>
@@ -13,7 +13,7 @@ function Header(){
                         <span className="capsule right">{viewId}</span>    
                     </div>
                 ) : (
-                    <p className="n-text">crafted with 💙 by <a href="https://github.com/spurushottam13" target="_blank" className="clean-aTag">purushottam</a></p>
+                    <p className="n-text">crafted with <span role="img" aria-labelledby="love">💙</span> by <a href="https://github.com/spurushottam13" target="_blank" rel="noopener noreferrer" className="clean-aTag">purushottam</a></p>
                 )
             }
         </div>

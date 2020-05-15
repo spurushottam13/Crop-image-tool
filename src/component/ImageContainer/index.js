@@ -24,12 +24,12 @@ function ImageContainer({src}){
                     ) : (
                         <div className="inline-wrapper -sp">
                             <div>Size: {size.width}x{size.height}</div>
-                            <a className="clean-aTag" target="_blank" href={src} >Link</a>
+                            <a className="clean-aTag" target="_blank" rel="noopener noreferrer" href={src} >Link</a>
                         </div>
                     )
                 }
             </div>
-            <img src={src} className="img" ref={imgRef} />
+            <img src={src} alt="random" className="img" ref={imgRef} />
         </div>
     )
 }

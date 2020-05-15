@@ -53,7 +53,7 @@
     cursor: pointer;
 }
 
-.myfileupload-buttonbar input {
+.fileupload-buttonbar input {
     position: absolute;
     top: 0;
     right: 0;
@@ -67,7 +67,7 @@
     direction: ltr;
     cursor: pointer;
 }
-.myui-button
+.file-button
 {
     position: relative;
     cursor: pointer;
