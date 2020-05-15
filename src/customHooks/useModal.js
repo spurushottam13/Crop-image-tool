@@ -54,7 +54,7 @@ function useModal() {
                     {component}
                     <div
                         style={{
-                            width: "fit-content",
+                            width: "min-content",
                             padding: "2px 8px",
                             borderRadius: "4px",
                             background: "#8ea5f4",
